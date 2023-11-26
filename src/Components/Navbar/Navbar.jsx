@@ -15,23 +15,15 @@ const Navbar = () => {
     {
       name: "Home",
       pageLink: "/",
-    },
-    {
-      name: "Blogs",
-      pageLink: "/blogs",
-    },
+    }
   ];
 
   // replace with actual private navlinks
   const privateNavlinks = [
     {
-      name: "About",
-      pageLink: "/about",
-    },
-    {
-      name: "Contact",
-      pageLink: "/contact",
-    },
+      name: "Dashboard",
+      pageLink: "/dashboard",
+    }
   ];
 
   // basic navbar styles
@@ -92,14 +84,14 @@ const Navbar = () => {
           </span>
           <div className="h-8 w-8 lg:h-10 lg:w-10">
             <img
-              src="https://i.ibb.co/N1v8ZTZ/icons8-favicon-96.png"
+              src="https://i.ibb.co/bd1Vxk3/icons8-health-checkup-100.png"
               alt="logo"
               className="h-full w-full object-cover"
             />
           </div>
           <div className="text-2xl font-bold">
-            <span>Nav</span>
-            <span>bar</span>
+            <span className="text-success">Apex</span>
+            <span className="text-primary">Diag</span>
           </div>
         </div>
         {/* Navlinks and user info */}
