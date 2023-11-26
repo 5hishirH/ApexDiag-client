@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import MyButton from "../Button/MyButton";
 import { FiMenu } from "react-icons/fi";
 import { MdCloseFullscreen } from "react-icons/md";
 import useAuthContext from "../../Providers/AuthProvider";
@@ -37,8 +36,8 @@ const Navbar = () => {
 
   // basic navbar styles
   const navbarStyles = {
-    backgroud: "bg-white",
-    inactiveNavLink: "text-black font-medium",
+    backgroud: "bg-[#34495e]",
+    inactiveNavLink: "text-[#ecf0f1] font-medium",
     activeNavLink: "text-primary font-bold",
   };
 
@@ -79,7 +78,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
+    <div className={`${navbarStyles.backgroud} shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
       <div className="w-11/12 lg:w-4/5 mx-auto py-5 lg:py-6 flex items-center justify-between">
         {/* Logo Part */}
         <div className="flex items-center gap-3 lg:gap-4">

@@ -12,15 +12,15 @@ export default {
     themes: [
       {
         mytheme: {
-          primary: "#1e3a8a",
-          secondary: "#93c5fd",
-          accent: "#99f6e4",
-          neutral: "#ffffff",
-          "base-100": "#ffffff",
-          info: "#ffffff",
+          primary: "#3498db",
+          secondary: "#2ecc71",
+          accent: "#95a5a6",
+          neutral: "#bdc3c7",
+          "base-100": "#ecf0f1",
+          info: "#bdc3c7",
           success: "#86efac",
           warning: "#ff704d",
-          error: "#ff3300",
+          error: "#e74c3c",
         },
       },
     ],
