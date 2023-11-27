@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import useAuthContext from "../../Providers/AuthProvider";
-import { GoogleAuthProvider } from "firebase/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";

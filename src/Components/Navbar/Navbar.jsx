@@ -81,7 +81,7 @@ const Navbar = () => {
             onClick={() => {
               setOpen(!open);
             }}
-            className="cursor-pointer block lg:hidden text-xl pt-1 mr-2"
+            className="cursor-pointer block lg:hidden text-xl pt-1 mr-2 text-white"
           >
             {open ? <MdCloseFullscreen /> : <FiMenu />}
           </span>
@@ -92,7 +92,7 @@ const Navbar = () => {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="text-2xl font-bold">
+          <div className="text-xl lg:text-2xl font-bold">
             <span className="text-success">Apex</span>
             <span className="text-primary">Diag</span>
           </div>
@@ -125,19 +125,27 @@ const Navbar = () => {
               ))}
               {user
                 ? privateNavlinks?.map(({ name, pageLink }, i) => (
-                    <NavLink
-                      to={pageLink}
-                      key={i}
-                      className={({ isActive, isPending }) =>
-                        isPending
-                          ? "pending"
-                          : isActive
-                          ? `text-lg ${navbarStyles.activeNavLink}`
-                          : `text-lg ${navbarStyles.inactiveNavLink}`
-                      }
-                    >
-                      {name}
-                    </NavLink>
+                    <>
+                      <NavLink
+                        to={pageLink}
+                        key={i}
+                        className={({ isActive, isPending }) =>
+                          isPending
+                            ? "pending"
+                            : isActive
+                            ? `text-lg ${navbarStyles.activeNavLink}`
+                            : `text-lg ${navbarStyles.inactiveNavLink}`
+                        }
+                      >
+                        {name}
+                      </NavLink>
+                      <button
+                        onClick={handleLogOut}
+                        className={`btn btn-error text-white btn-sm inline-block lg:hidden w-fit`}
+                      >
+                        LOGOUT
+                      </button>
+                    </>
                   ))
                 : ""}
             </div>
@@ -149,7 +157,7 @@ const Navbar = () => {
                   <div
                     onMouseOver={() => setHoverEffect(true)}
                     onMouseLeave={() => setHoverEffect(false)}
-                    className="w-9 rounded-full border border-white"
+                    className="w-8 rounded-full border border-white"
                   >
                     <img
                       src={
@@ -171,13 +179,16 @@ const Navbar = () => {
                 </div>
                 <button
                   onClick={handleLogOut}
-                  className={`btn btn-error text-white`}
+                  className={`btn btn-error text-white hidden lg:inline-block`}
                 >
                   LOGOUT
                 </button>
               </>
             ) : (
-              <NavLink to={"/login"} className={`btn btn-success`}>
+              <NavLink
+                to={"/login"}
+                className={`btn btn-success btn-sm lg:btn-md`}
+              >
                 LOGIN
               </NavLink>
             )}
