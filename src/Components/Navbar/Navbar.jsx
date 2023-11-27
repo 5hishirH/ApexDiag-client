@@ -10,12 +10,13 @@ const Navbar = () => {
   const { user, handleSignOut } = useAuthContext();
   //...
   const [open, setOpen] = useState(false);
+  const [hoverEffect, setHoverEffect] = useState(false);
   // replace with actual public navlinks
   const publicNavlinks = [
     {
       name: "Home",
       pageLink: "/",
-    }
+    },
   ];
 
   // replace with actual private navlinks
@@ -23,7 +24,7 @@ const Navbar = () => {
     {
       name: "Dashboard",
       pageLink: "/dashboard",
-    }
+    },
   ];
 
   // basic navbar styles
@@ -70,7 +71,9 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`${navbarStyles.backgroud} shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}>
+    <div
+      className={`${navbarStyles.backgroud} shadow-[0_3px_10px_rgb(0,0,0,0.2)]`}
+    >
       <div className="w-11/12 lg:w-4/5 mx-auto py-5 lg:py-6 flex items-center justify-between">
         {/* Logo Part */}
         <div className="flex items-center gap-3 lg:gap-4">
@@ -142,31 +145,33 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             {user ? (
               <>
-                <div className="avatar">
-                  <div className="w-9 rounded-full ring ring-success ring-offset-base-100 ring-offset-2">
+                <div className="avatar online">
+                  <div
+                    onMouseOver={() => setHoverEffect(true)}
+                    onMouseLeave={() => setHoverEffect(false)}
+                    className="w-9 rounded-full border border-white"
+                  >
                     <img
                       src={
                         user.photoURL
                           ? user.photoURL
                           : "https://i.ibb.co/GRmXjRc/icons8-avatar-96.png"
                       }
+                      alt=""
+                      className="h-full w-full"
                     />
                   </div>
+                  <div
+                    className={`top-12 left-1/2 -translate-x-1/2 absolute bg-white text-black font-medium px-2 py-1 rounded w-20 h-8 text-center ${
+                      hoverEffect ? "visible" : "invisible"
+                    }`}
+                  >
+                    {user?.displayName}
+                  </div>
                 </div>
-                {/* <div className="h-8 w-8 lg:h-10 lg:w-10 border border-emerald-600 rounded-full overflow-hidden">
-                  <img
-                    src={
-                      user.photoURL
-                        ? user.photoURL
-                        : "https://i.ibb.co/GRmXjRc/icons8-avatar-96.png"
-                    }
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div> */}
                 <button
                   onClick={handleLogOut}
-                  className={`btn btn-warning text-white`}
+                  className={`btn btn-error text-white`}
                 >
                   LOGOUT
                 </button>
