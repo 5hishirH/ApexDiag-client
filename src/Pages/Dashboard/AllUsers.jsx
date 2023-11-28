@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../../CustomHooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 
 const AllUsers = () => {
   const axiosPublic = useAxiosPublic();
-  const [userData, setUserData] = useState();
+  // const [userData, setUserData] = useState();
 
-  useEffect(() => {
-    axiosPublic
-      .get("/users")
-      .then((res) => {
-        setUserData(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const { data: userData = [], refetch } = useQuery({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/users");
+      return res.data;
+    },
+  });
+
+  // useEffect(() => {
+  //   axiosPublic
+  //     .get("/users")
+  //     .then((res) => {
+  //       setUserData(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
 
   const makeAdmin = (id, role) => {
     if (role === "admin") {
@@ -34,6 +43,7 @@ const AllUsers = () => {
           text: "",
           icon: "success",
         });
+        refetch();
       })
       .catch((error) => {
         console.error("Error making PUT request:", error);
@@ -57,6 +67,7 @@ const AllUsers = () => {
           text: "",
           icon: "success",
         });
+        refetch();
       })
       .catch((error) => {
         console.error("Error making PUT request:", error);
@@ -72,8 +83,13 @@ const AllUsers = () => {
         >
           <div>{e?.userName}</div>
           <div>{e?.mail}</div>
-          <button className="btn btn-accent btn-sm">Details</button>
-          <button onClick={() => makeAdmin(e?._id, e?.role)} className="btn btn-info btn-sm">make { e?.role === "admin" ? "normal" : "admin"}</button>
+          <button className="btn btn-accent btn-sm">See Info</button>
+          <button
+            onClick={() => makeAdmin(e?._id, e?.role)}
+            className="btn btn-info btn-sm"
+          >
+            make {e?.role === "admin" ? "normal" : "admin"}
+          </button>
           <button
             onClick={() => handleStatus(e?._id, e?.status)}
             className={`btn ${
