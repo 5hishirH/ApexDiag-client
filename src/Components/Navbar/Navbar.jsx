@@ -23,7 +23,7 @@ const Navbar = () => {
   const privateNavlinks = [
     {
       name: "Dashboard",
-      pageLink: "/dashboard",
+      pageLink: "/dashboard/AllUsers",
     },
   ];
 
@@ -108,10 +108,10 @@ const Navbar = () => {
             } shadow-[0_16px_10px_-10px_rgb(0,0,0,0.2)] lg:shadow-none`}
           >
             <div className="w-11/12 mx-auto flex flex-col lg:flex-row gap-4">
-              {publicNavlinks?.map(({ name, pageLink }, i) => (
+              {publicNavlinks?.map(({ name, pageLink }, index) => (
                 <NavLink
                   to={pageLink}
-                  key={i}
+                  key={index}
                   className={({ isActive, isPending }) =>
                     isPending
                       ? "pending"
@@ -150,14 +150,14 @@ const Navbar = () => {
                 : ""}
             </div>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             {user ? (
               <>
                 <div className="avatar online">
                   <div
                     onMouseOver={() => setHoverEffect(true)}
                     onMouseLeave={() => setHoverEffect(false)}
-                    className="w-8 rounded-full border border-white"
+                    className="w-8 lg:w-10 rounded-full border lg:border-2 border-white"
                   >
                     <img
                       src={

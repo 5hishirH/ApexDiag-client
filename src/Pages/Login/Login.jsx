@@ -9,7 +9,7 @@ const Login = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const { handleSignInWithEmailAndPassword, handleGoogleUser, auth, provider } =
+  const { handleSignInWithEmailAndPassword } =
     useAuthContext();
 
   const handleLogin = (e) => {
@@ -23,7 +23,7 @@ const Login = () => {
         const user = userCredential.user;
         console.log(user);
         // ...
-        navigate(location?.state ? location?.state : "/");
+        navigate("/dashboard");
         Swal.fire({
           icon: "success",
           title: "Login Successfull",
@@ -42,14 +42,14 @@ const Login = () => {
 
   return (
     <div className="w-10/12 md:w-1/4 mx-auto">
-      <div className="h-[3rem] flex justify-center mt-8">
+      <div className="h-[3rem] flex justify-center mt-20">
         <img
-          src="https://i.ibb.co/ch1Ljgk/billing.png"
+          src="https://i.ibb.co/rdw1Rxb/icons8-health-checkup-100-1.png"
           alt=""
           className="h-full"
         />
       </div>
-      <div className="mt-10">
+      <div className="mt-8">
         <h2 className="text-3xl font-bold text-center">Welcome back</h2>
         <form onSubmit={handleLogin} className="mt-6 text-lg">
           <div className="form-control w-full">

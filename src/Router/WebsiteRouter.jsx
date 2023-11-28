@@ -4,6 +4,12 @@ import Home from "../Pages/Home/Home"
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import ErrorPage from "../Pages/ErrorPage";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import AllUsers from "../Pages/Dashboard/AllUsers";
+import NewTest from "../Pages/Dashboard/NewTest";
+import AllTests from "../Pages/Dashboard/AllTests";
+import NewBanner from "../Pages/Dashboard/NewBanner";
+import AllBanners from "../Pages/Dashboard/AllBanners";
 
 const WebsiteRouter = createBrowserRouter([
     {
@@ -22,6 +28,32 @@ const WebsiteRouter = createBrowserRouter([
             {
                 path: "/register",
                 element: <Register></Register>,
+            },
+            {
+                path: "/dashboard",
+                element: <Dashboard></Dashboard>,
+                children: [
+                    {
+                        path: "/dashboard/AllUsers",
+                        element: <AllUsers></AllUsers>
+                    },
+                    {
+                        path: "/dashboard/newTest",
+                        element: <NewTest></NewTest>
+                    },
+                    {
+                        path: "/dashboard/allTests",
+                        element: <AllTests></AllTests>
+                    },
+                    {
+                        path: "/dashboard/newBanner",
+                        element: <NewBanner></NewBanner>
+                    },
+                    {
+                        path: "/dashboard/allBanners",
+                        element: <AllBanners></AllBanners>
+                    },
+                ]
             }
         ]
     }
