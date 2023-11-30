@@ -11,6 +11,8 @@ import AllTests from "../Pages/Dashboard/AllTests";
 import NewBanner from "../Pages/Dashboard/NewBanner";
 import AllBanners from "../Pages/Dashboard/AllBanners";
 import UpdateTest from "../Pages/Dashboard/UpdateTest";
+import All_Tests from "../Pages/AllTests/All_Tests";
+import TestDetails from "../Pages/TestDetails/TestDetails";
 
 const WebsiteRouter = createBrowserRouter([
     {
@@ -59,7 +61,15 @@ const WebsiteRouter = createBrowserRouter([
                         element: <AllBanners></AllBanners>
                     },
                 ]
-            }
+            },
+            {
+                path: "/all_tests",
+                element: <All_Tests></All_Tests>
+            },
+            {
+                path: "/tests/:id",
+                element: <TestDetails></TestDetails>
+            },
         ]
     }
 ])

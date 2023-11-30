@@ -97,7 +97,7 @@ const NewBanner = () => {
           </div>
           <div className="form-control w-full max-w-xs">
             <label className="label">
-              <span className="label-text">Coupon rate</span>
+              <span className="label-text">Coupon rate in %</span>
             </label>
             <input
               name="couponRate"
@@ -110,7 +110,7 @@ const NewBanner = () => {
         <div className="mt-8">
           <input
             type="submit"
-            value="Update the test"
+            value="Add the banner"
             className="cursor-pointer btn btn-success"
           />
         </div>

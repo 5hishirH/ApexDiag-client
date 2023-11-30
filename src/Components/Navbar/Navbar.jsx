@@ -25,6 +25,10 @@ const Navbar = () => {
       name: "Dashboard",
       pageLink: "/dashboard/AllUsers",
     },
+    {
+      name: "All_Tests",
+      pageLink: "/all_tests"
+    }
   ];
 
   // basic navbar styles
