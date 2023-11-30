@@ -10,6 +10,7 @@ import NewTest from "../Pages/Dashboard/NewTest";
 import AllTests from "../Pages/Dashboard/AllTests";
 import NewBanner from "../Pages/Dashboard/NewBanner";
 import AllBanners from "../Pages/Dashboard/AllBanners";
+import UpdateTest from "../Pages/Dashboard/UpdateTest";
 
 const WebsiteRouter = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const WebsiteRouter = createBrowserRouter([
                     {
                         path: "/dashboard/allTests",
                         element: <AllTests></AllTests>
+                    },
+                    {
+                        path: "/dashboard/updateTest/:id",
+                        element: <UpdateTest></UpdateTest>
                     },
                     {
                         path: "/dashboard/newBanner",

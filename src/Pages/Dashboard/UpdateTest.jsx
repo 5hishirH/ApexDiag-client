@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAxiosPublic from "../../CustomHooks/useAxiosPublic";
-import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate, useParams } from "react-router-dom";
 
-const NewTest = () => {
+const UpdateTest = () => {
   const axiosPublic = useAxiosPublic();
+  const [test, setTest] = useState()
+  const navigate = useNavigate();
+  //   const date = new Date(date);
+  const param = useParams();
+  useEffect(() => {
+    axiosPublic.get(`/tests/${param?.id}`).then((res) => {
+      setTest(res.data);
+    });
+  }, []);
 
-  const handleNewTest = (e) => {
+  const handleUpdate = (e) => {
     e.preventDefault();
     const testName = e.target.testName.value;
     const imgURL = e.target.imgURL.value;
@@ -15,30 +24,34 @@ const NewTest = () => {
     const price = e.target.price.value;
     const date = e.target.date.value;
     const slots = e.target.slots.value;
-
-    const testData = { testName, imgURL, details, price, date, slots };
+    const updatedTest = { testName, imgURL, details, price, date, slots };
+    console.log(updatedTest);
 
     axiosPublic
-      .post("/tests", testData)
+      .put(`/tests/${param?.id}`, updatedTest)
       .then((res) => {
-        // toast("Test added successfully!")
-        toast.success("Test added successfully!", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
+        toast.success("Test updated successfully!");
+        navigate("/dashboard/allTests");
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.error("Error making PUT request:", error);
+      });
   };
   return (
     <div className="p-8 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]">
-      <ToastContainer />
-      <form onSubmit={handleNewTest}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <form onSubmit={handleUpdate}>
         <div className="grid grid-cols-2">
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -47,7 +60,7 @@ const NewTest = () => {
             <input
               name="testName"
               type="text"
-              placeholder="Type here"
+              defaultValue={test?.testName}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -59,7 +72,7 @@ const NewTest = () => {
             <input
               name="imgURL"
               type="url"
-              placeholder="Type here"
+              defaultValue={test?.imgURL}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -71,7 +84,7 @@ const NewTest = () => {
             <input
               name="details"
               type="text"
-              placeholder="Type here"
+              defaultValue={test?.details}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -83,6 +96,7 @@ const NewTest = () => {
             <input
               name="price"
               type="number"
+              defaultValue={test?.price}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -94,6 +108,7 @@ const NewTest = () => {
             <input
               name="date"
               type="date"
+              defaultValue={test?.date}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -105,6 +120,7 @@ const NewTest = () => {
             <input
               name="slots"
               type="number"
+              defaultValue={test?.slots}
               required
               className="input input-bordered w-full max-w-xs"
             />
@@ -113,7 +129,7 @@ const NewTest = () => {
         <div className="mt-8">
           <input
             type="submit"
-            value="Add the test"
+            value="Update the test"
             className="cursor-pointer btn btn-success"
           />
         </div>
@@ -122,4 +138,4 @@ const NewTest = () => {
   );
 };
 
-export default NewTest;
+export default UpdateTest;
