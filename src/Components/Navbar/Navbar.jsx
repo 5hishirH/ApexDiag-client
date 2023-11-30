@@ -23,7 +23,7 @@ const Navbar = () => {
   const privateNavlinks = [
     {
       name: "Dashboard",
-      pageLink: "/dashboard/AllUsers",
+      pageLink: "/dashboard",
     },
     {
       name: "All_Tests",

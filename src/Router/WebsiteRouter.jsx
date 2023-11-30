@@ -14,6 +14,7 @@ import UpdateTest from "../Pages/Dashboard/UpdateTest";
 import All_Tests from "../Pages/AllTests/All_Tests";
 import TestDetails from "../Pages/TestDetails/TestDetails";
 import TestReservation from "../Pages/Dashboard/TestReservation";
+import PrivateRoute from "./PrivateRoute";
 
 const WebsiteRouter = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const WebsiteRouter = createBrowserRouter([
             },
             {
                 path: "/dashboard",
-                element: <Dashboard></Dashboard>,
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
                 children: [
                     {
                         path: "/dashboard/AllUsers",
