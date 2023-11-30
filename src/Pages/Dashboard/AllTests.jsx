@@ -75,7 +75,7 @@ const AllTests = () => {
                 <th>{i + 1}</th>
                 <td>{e?.testName}</td>
                 <td>
-                  <Link className="btn btn-sm btn-primary text-white">
+                  <Link to={`/dashboard/reserve/${e?._id}`} className="btn btn-sm btn-primary text-white">
                     Reservations
                   </Link>
                 </td>

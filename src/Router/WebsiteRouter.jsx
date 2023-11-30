@@ -13,6 +13,7 @@ import AllBanners from "../Pages/Dashboard/AllBanners";
 import UpdateTest from "../Pages/Dashboard/UpdateTest";
 import All_Tests from "../Pages/AllTests/All_Tests";
 import TestDetails from "../Pages/TestDetails/TestDetails";
+import TestReservation from "../Pages/Dashboard/TestReservation";
 
 const WebsiteRouter = createBrowserRouter([
     {
@@ -59,6 +60,10 @@ const WebsiteRouter = createBrowserRouter([
                     {
                         path: "/dashboard/allBanners",
                         element: <AllBanners></AllBanners>
+                    },
+                    {
+                        path: "/dashboard/reserve/:id",
+                        element: <TestReservation></TestReservation>
                     },
                 ]
             },
